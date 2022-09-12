@@ -23,3 +23,5 @@ sudo apt install -y python3-psutil
 # Run ansible!
 ansible-playbook playbook.yaml
 
+# Install udev rules for ledger
+wget -q -O - https://raw.githubusercontent.com/LedgerHQ/udev-rules/master/add_udev_rules.sh | sudo bash

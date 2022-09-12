@@ -11,3 +11,9 @@
     dest: "~/.config/redshift.conf"
     backup: yes
     mode: 0640
+
+- name: Install chrome
+  become: yes
+  ansible.builtin.apt:
+    name: google-chrome-stable
+    state: present

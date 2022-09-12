@@ -29,3 +29,10 @@
     pkg:
         - code
     state: present
+
+- name: Install tmux
+  become: yes
+  apt:
+    state: present
+    pkg:
+        - tmux

@@ -1,3 +1,9 @@
+- name: Install openssh server
+  become: yes
+  ansible.builtin.apt:
+    name: openssh-server
+    state: present
+
 - name: Install keepass
   become: yes
   ansible.builtin.apt:
