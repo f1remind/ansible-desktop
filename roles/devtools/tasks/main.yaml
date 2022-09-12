@@ -1,0 +1,31 @@
+---
+- include_tasks: git.yaml
+- name: Install prerequisites to add a new cert
+  become: yes
+  apt:
+    state: present
+    pkg:
+        - gnupg2 
+        - software-properties-common 
+        - apt-transport-https 
+        - curl
+
+- name: install key (apt)
+  become: yes
+  apt_key:
+    url: 'https://packages.microsoft.com/keys/microsoft.asc'
+    state: present
+
+
+- name: Add vscode repository into sources list
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    state: present
+
+- name: Install VSCode
+  become: yes
+  apt:
+    pkg:
+        - code
+    state: present

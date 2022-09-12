@@ -1,0 +1,5 @@
+- name: Install keepass
+  become: yes
+  ansible.builtin.apt:
+    name: keepassx
+    state: present

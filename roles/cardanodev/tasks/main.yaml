@@ -1,0 +1,68 @@
+- name: Install ffmpeg to handle video conversions
+  become: yes
+  ansible.builtin.apt:
+    name: ffmpeg
+    state: present
+
+- name: Ensure Development directory exists
+  ansible.builtin.file:
+    path: ~/dev/cardano/
+    state: directory
+    mode: '0755'
+
+- name: Ensure default dir for external binaries exists
+  ansible.builtin.file:
+    path: ~/bin/
+    state: directory
+    mode: '0755'
+
+- name: Ensure plutus-apps exists
+  ansible.builtin.git:
+    repo: 'https://github.com/input-output-hk/plutus-apps'
+    dest: ~/bin/plutus-apps
+    update: no
+
+- name: Check if nix is installed
+  stat:
+    path: /nix/
+  register: nix_exists
+
+- name: Download nix installer
+  get_url: 
+    url: https://nixos.org/nix/install 
+    dest: /tmp/nix.sh
+    mode: '0755'
+  when: not nix_exists.stat.exists
+    
+- name: Execute the nix installer
+  become: no
+  shell: yes | /tmp/nix.sh --daemon
+  when: not nix_exists.stat.exists
+
+- name: Remove the nix installer
+  file: 
+    path: /tmp/nix.sh
+    state: absent
+  when: not nix_exists.stat.exists
+
+- name: Ensure nix config directory exists
+  ansible.builtin.file:
+    path: ~/.config/nix/
+    state: directory
+    mode: '0755'
+
+- name: set nix.conf in /etc/nix -> use iohk cache
+  become: yes
+  copy:
+    src: nix.conf.system
+    dest: "/etc/nix/nix.conf"
+    backup: yes
+    mode: 0640
+
+- name: set nix.conf in ~/.config -> enable nix-shell and flakes
+  become: no
+  copy:
+    src: nix.conf.user
+    dest: "~/.config/nix/nix.conf"
+    backup: yes
+    mode: 0640

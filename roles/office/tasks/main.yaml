@@ -1,0 +1,5 @@
+- name: Install thunderbird
+  become: yes
+  ansible.builtin.apt:
+    name: thunderbird
+    state: present

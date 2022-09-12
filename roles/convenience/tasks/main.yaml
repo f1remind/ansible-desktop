@@ -1,0 +1,13 @@
+- name: Install redshift
+  become: yes
+  ansible.builtin.apt:
+    name: redshift-gtk
+    state: present
+
+- name: Copy redshift conf
+  become: no
+  copy:
+    src: redshift.conf
+    dest: "~/.config/redshift.conf"
+    backup: yes
+    mode: 0640

@@ -1,0 +1,4 @@
+# flux collection << this is not f.lux..
+#- name: nicholaswilde.flux2
+#  src: https://github.com/nicholaswilde/ansible-role-flux
+#  version: v1.0.11

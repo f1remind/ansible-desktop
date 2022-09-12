@@ -1,0 +1,13 @@
+- name: Install vim
+  become: yes
+  ansible.builtin.apt:
+    name: vim
+    state: present
+
+- name: Copy vimrc
+  become: no
+  copy:
+    src: vimrc
+    dest: "~/.vimrc"
+    backup: yes
+    mode: 0640
