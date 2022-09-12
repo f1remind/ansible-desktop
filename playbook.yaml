@@ -4,6 +4,7 @@
   vars_files:
     - vars/semisecrets.yaml
   roles:
+    - pop_os_settings
     - administration
     - ministervim
     - networktools

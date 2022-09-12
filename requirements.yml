@@ -2,3 +2,8 @@
 #- name: nicholaswilde.flux2
 #  src: https://github.com/nicholaswilde/ansible-role-flux
 #  version: v1.0.11
+collections:
+  # Install a collection from Ansible Galaxy.
+  - name: community.general
+    version: 5.5.0
+    source: https://galaxy.ansible.com

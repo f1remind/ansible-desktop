@@ -1,0 +1,108 @@
+- name: Set keyboard layout to dvorak + de
+  community.general.dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'us+dvorak'), ('xkb', 'de+qwerty')]"
+    state: present
+
+- name: Disable mouse acceleration
+  community.general.dconf:
+    key: "/org/gnome/desktop/peripherals/mouse/accel-profile"
+    value: "'flat'"
+    state: present
+
+- name: Keybindings, maximize -> Super+Up
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/maximize"
+    value: "['<Super>Up']"
+    state: present
+
+- name: Keybindings, unmaximize -> Super+Down
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/unmaximize"
+    value: "['<Super>Down']"
+    state: present
+
+- name: Keybindings, switch-applications -> Super+Tab
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/switch-applications"
+    value: "['<Super>Tab']"
+    state: present
+
+- name: Keybindings, switch-applications-backward -> Shift+Super+Tab
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/switch-applications-backward"
+    value: "['<Shift><Super>Tab']"
+    state: present
+
+- name: Keybindings, switch-windows -> Alt+Tab
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/switch-windows"
+    value: "['<Alt>Tab']"
+    state: present
+
+- name: Keybindings, switch-windows-backward -> Shift+Alt+Tab
+  community.general.dconf:
+    key: "/org/gnome/desktop/wm/keybindings/switch-windows-backward"
+    value: "['<Shift><Alt>Tab']"
+    state: present
+
+- name: Keybindings, Tile left side of screen
+  community.general.dconf:
+    key: "/org/gnome/mutter/keybindings/toggle-tiled-left"
+    value: "['<Primary><Super>Left', '<Primary><Super>KP_Left', '<Primary><Super>h', '<Super>Left']"
+    state: present
+
+- name: Keybindings, Tile right side of screen
+  community.general.dconf:
+    key: "/org/gnome/mutter/keybindings/toggle-tiled-right"
+    value: "['<Primary><Super>Right', '<Primary><Super>KP_Right', '<Primary><Super>l', '<Super>Right']"
+    state: present
+
+- name: Keybindings, Media key for email
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/email"
+    value: "@as []"
+    state: present
+
+- name: Keybindings, Media key for home
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/home"
+    value: "['<Super>f', '<Super>e']"
+    state: present
+
+- name: Keybindings, Media key for terminal
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/terminal"
+    value: "['<Primary><Alt>t']"
+    state: present
+
+- name: Keybindings, Remove duplicate usage of Super+Down
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/focus-down"
+    value: "['<Super>KP_Down', '<Super>j']"
+    state: present
+
+- name: Keybindings, Remove duplicate usage of Super+Up
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/focus-up"
+    value: "['<Super>KP_Up', '<Super>k']"
+    state: present
+
+- name: Keybindings, Remove duplicate usage of Super+Left
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/focus-left"
+    value: "['<Super>KP_Left', '<Super>h']"
+    state: present
+
+- name: Keybindings, Remove duplicate usage of Super+Right
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/pop-shell/focus-right"
+    value: "['<Super>KP_Right', '<Super>l']"
+    state: present
+
+
+- name: Disable sleeping on inactivity
+  community.general.dconf:
+    key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"
+    value: "'nothing'"
+    state: present
