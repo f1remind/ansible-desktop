@@ -17,6 +17,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 
 ## Convenience
 * Spotify
+* Discord
 * Redshift
 * Google Chrome
 

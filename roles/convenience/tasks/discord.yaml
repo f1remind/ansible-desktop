@@ -1,0 +1,34 @@
+---
+- name: Gather the package facts to decide on discord
+  ansible.builtin.package_facts:
+    manager: auto
+
+- name: Check if discord is installed
+  command: dpkg-query -W discord
+  register: discord_check_deb
+  failed_when: discord_check_deb.rc > 1
+  changed_when: discord_check_deb.rc == 1
+
+- name: Download discord
+  get_url: 
+    url="{{ discord_url }}"
+    dest="/home/{{ ansible_env.USER }}/Downloads/discord.deb"
+  when: (discord_check_deb.rc == 1) or (discord_version is version(ansible_facts.packages['discord'][0]['version'], '>'))
+
+- name: Install discord
+  become: yes
+  apt: deb="/home/{{ ansible_env.USER }}/Downloads/discord.deb"
+  when: discord_check_deb.rc == 1 or (discord_version is version(ansible_facts.packages['discord'][0]['version'], '>'))
+
+- name: Install potentially missing discord dependencies
+  apt:
+    name: discord
+    state: fixed
+  when: discord_check_deb.rc == 1 or (discord_version is version(ansible_facts.packages['discord'][0]['version'], '>'))
+
+- name: Delete discord deb file after installation
+  file:
+    path: "/home/{{ ansible_env.USER }}/Downloads/discord.deb"
+    state: absent
+  when: discord_check_deb.rc == 1 or (discord_version is version(ansible_facts.packages['discord'][0]['version'], '>'))
+
