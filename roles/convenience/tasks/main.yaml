@@ -1,3 +1,5 @@
+---
+- include_tasks: spotify.yaml
 - name: Install redshift
   become: yes
   ansible.builtin.apt:
