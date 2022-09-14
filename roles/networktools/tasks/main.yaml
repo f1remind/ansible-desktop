@@ -1,5 +1,0 @@
-- name: Install nmap
-  become: yes
-  ansible.builtin.apt:
-    name: nmap
-    state: present

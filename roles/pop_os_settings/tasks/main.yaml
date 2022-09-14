@@ -100,7 +100,6 @@
     value: "['<Super>KP_Right', '<Super>l']"
     state: present
 
-
 - name: Disable sleeping on inactivity
   community.general.dconf:
     key: "/org/gnome/settings-daemon/plugins/power/sleep-inactive-ac-type"

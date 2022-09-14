@@ -6,8 +6,7 @@
   roles:
     - pop_os_settings
     - administration
-    - ministervim
-    - networktools
+    - vim
     - devtools
     - cardanodev
     - convenience
