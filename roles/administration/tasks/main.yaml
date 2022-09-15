@@ -1,3 +1,9 @@
+- name: Install sshfs
+  become: yes
+  ansible.builtin.apt:
+    name: sshfs
+    state: present
+
 - name: Install openssh server
   become: yes
   ansible.builtin.apt:

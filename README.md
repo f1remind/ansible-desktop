@@ -8,6 +8,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 # Packages / Roles
 ## Administration
 * openssh server
+* sshfs
 * nmap
 
 ## Cardano development

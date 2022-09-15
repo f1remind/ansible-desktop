@@ -1,3 +1,3 @@
 ---
-discord_version: "0.0.19"
+discord_version: "0.0.20"
 discord_url: "{{ \"https://dl.discordapp.net/apps/linux/\" + discord_version + \"/discord-\" + discord_version + \".deb\" }}"
