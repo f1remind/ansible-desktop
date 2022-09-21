@@ -15,6 +15,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 * ffmpeg (to convert NFT mp4s to thumbnail gifs)
 * nix / nix-shell + flakes and IOHK cache
 * cloning some cardano projects
+* doctl for Digital Ocean
 
 ## Convenience
 * Spotify

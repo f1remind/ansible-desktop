@@ -1,3 +1,5 @@
+---
+- include_tasks: doctl.yaml
 - name: Install ffmpeg to handle video conversions
   become: yes
   ansible.builtin.apt:

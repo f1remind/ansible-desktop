@@ -1,0 +1,8 @@
+---
+doctl_version: "1.81.0"
+
+# Directory to store downloaded files, including checksum info.
+doctl_download_dir: /usr/local/src
+
+# Download URLs for fetching archive of binaries and checksum verification info.
+doctl_tarball_url: "https://github.com/digitalocean/doctl/releases/download/v{{ doctl_version }}/doctl-{{ doctl_version }}-linux-amd64.tar.gz"

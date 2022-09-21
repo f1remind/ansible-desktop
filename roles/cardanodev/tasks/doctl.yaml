@@ -1,0 +1,22 @@
+---
+- name: Download Dotctl files.
+  become: yes
+  get_url:
+    dest: "{{ doctl_download_dir }}/{{ item|basename }}"
+    url: "{{ item }}"
+  with_items:
+    - "{{ doctl_tarball_url }}"
+
+- name: Check Doctl version.
+  command: doctl version
+  ignore_errors: yes
+  changed_when: false
+  register: doctl_version_result
+
+- name: Extract Doctl binary files.
+  become: yes
+  unarchive:
+    remote_src: yes
+    src: "{{ doctl_download_dir }}/{{ doctl_tarball_url|basename }}"
+    dest: /usr/local/bin/
+  when: "'doctl version {{ doctl_version }}-release' not in  doctl_version_result.stdout|default('')"
