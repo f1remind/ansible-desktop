@@ -16,6 +16,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 * nix / nix-shell + flakes and IOHK cache
 * cloning some cardano projects
 * doctl for Digital Ocean
+* kubectl
 
 ## Convenience
 * Spotify
@@ -25,6 +26,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 
 ## Development tools
 * Tmux
+* jq
 * VSCode for JavaScript frontends
 
 ## Office

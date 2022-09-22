@@ -36,3 +36,10 @@
     state: present
     pkg:
         - tmux
+
+- name: Install jq
+  become: yes
+  apt:
+    state: present
+    pkg:
+        - jq

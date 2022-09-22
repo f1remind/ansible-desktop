@@ -6,3 +6,41 @@ doctl_download_dir: /usr/local/src
 
 # Download URLs for fetching archive of binaries and checksum verification info.
 doctl_tarball_url: "https://github.com/digitalocean/doctl/releases/download/v{{ doctl_version }}/doctl-{{ doctl_version }}-linux-amd64.tar.gz"
+
+# "kubectl" version to install
+kubectl_version: "1.25.0"
+
+# The default "archive" will download "kubectl" as a ".tar.gz" file. This is
+# about 2.5x smaller then "binary" but the tarball needs to be unarchived
+# by the role first after downloading.
+# If you specify "binary" the "kubectl" binary file will be downloaded. In
+# contrast to the tarball the binary file is about 2.5x bigger but doesn't
+# need to be unarchived by this role.
+# If download file size is important for you (e.g. slow download or download
+# over mobile link) stay with "archive". Otherwise "binary" might be an option.
+kubectl_download_filetype: "binary"
+# SHA512 checksum of the .tar.gz file (see https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.25.md#client-binaries)
+kubectl_checksum_archive: "sha512:34a7e9a496fff31a3afa6f5f7245212d051de3c2966e42a662040bde8a733c1cf55ce2e50227813fd29c6db758687a453a7df66b6c32f7f2c93959280c4e130a"
+# SHA512 checksum of the binary (see https://storage.googleapis.com/kubernetes-release/release/v1.25.0/bin/linux/amd64/kubectl.sha512)
+kubectl_checksum_binary: "sha512:fac91d79079672954b9ae9f80b9845fbf373e1c4d3663a84cc1538f89bf70cb85faee1bcd01b6263449f4a2995e7117e1c85ed8e5f137732650e8635b4ecee09"
+
+# Where to install "kubectl" binary
+kubectl_bin_directory: "/usr/local/bin"
+
+# Directory to store the kubectl archive
+kubectl_tmp_directory: "{{ lookup('env', 'TMPDIR') | default('/tmp',true) }}"
+
+# Owner of "kubectl" binary
+kubectl_owner: "root"
+
+# Group of "kubectl" binary
+kubectl_group: "root"
+
+# Specifies the permissions of the "kubectl" binary
+kubectl_binary_mode: "0755"
+
+# Operating system on which "kubectl" should run on
+kubectl_os: "linux"  # use "darwin" for MacOS X, "windows" for Windows
+
+# Processor architecture "kubectl" should run on
+kubectl_arch: "amd64"  # other possible values: "386","arm64","arm","ppc64le","s390x"
