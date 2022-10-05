@@ -51,3 +51,9 @@
     pkg:
         - nodejs
         - npm
+
+- name: Install vue via npm globally
+  become: yes
+  community.general.npm:
+    name: '@vue/cli'
+    global: true
