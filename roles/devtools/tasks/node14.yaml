@@ -27,9 +27,8 @@
 - name: Install npm and node
   become: yes
   apt:
-    state: present
+    state: fixed
     update_cache: yes
     pkg:
         - nodejs
-        - npm
 
