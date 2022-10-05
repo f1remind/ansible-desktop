@@ -28,7 +28,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 * Tmux
 * jq
 * VSCode for JavaScript frontends
-* npm and nodejs
+* nodejs
 * vuecli
 
 ## Office
