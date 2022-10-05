@@ -1,5 +1,6 @@
 ---
 - include_tasks: git.yaml
+- include_tasks: node14.yaml
 - name: Install prerequisites to add a new cert
   become: yes
   apt:
@@ -43,14 +44,6 @@
     state: present
     pkg:
         - jq
-
-- name: Install npm and node
-  become: yes
-  apt:
-    state: present
-    pkg:
-        - nodejs
-        - npm
 
 - name: Install vue via npm globally
   become: yes

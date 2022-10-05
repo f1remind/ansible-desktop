@@ -1,0 +1,35 @@
+---
+
+- name: Check if node14 is installed
+  command: dpkg-query -W nodejs
+  register: node14_exists
+  failed_when: node14_exists.rc > 1
+  changed_when: node14_exists.rc == 1
+
+- name: Download node14 installer
+  get_url: 
+    url: https://deb.nodesource.com/setup_14.x
+    dest: /tmp/node14.sh
+    mode: '0755'
+  when: not node14_exists.rc == 1 or (node_version is version(ansible_facts.packages['nodejs'][0]['version'], '>'))
+    
+- name: Execute the node14 installer
+  become: yes
+  shell: yes | /tmp/node14.sh
+  when: not node14_exists.rc == 1 or (node_version is version(ansible_facts.packages['nodejs'][0]['version'], '>'))
+
+- name: Remove the node14 installer
+  file: 
+    path: /tmp/node14.sh
+    state: absent
+  when: not node14_exists.rc == 1 or (node_version is version(ansible_facts.packages['nodejs'][0]['version'], '>'))
+
+- name: Install npm and node
+  become: yes
+  apt:
+    state: present
+    update_cache: yes
+    pkg:
+        - nodejs
+        - npm
+
