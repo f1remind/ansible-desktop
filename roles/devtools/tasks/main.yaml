@@ -43,3 +43,11 @@
     state: present
     pkg:
         - jq
+
+- name: Install npm and node
+  become: yes
+  apt:
+    state: present
+    pkg:
+        - nodejs
+        - npm
