@@ -1,6 +1,13 @@
 ---
 - include_tasks: git.yaml
 - include_tasks: node14.yaml
+- name: Install ghc
+  become: yes
+  apt:
+    state: present
+    pkg:
+        - ghc
+
 - name: Install prerequisites to add a new cert
   become: yes
   apt:

@@ -30,6 +30,7 @@ Since I usually run my stuff on Debian flavored systems there's no support for o
 * VSCode for JavaScript frontends
 * nodejs
 * vuecli
+* ghc
 
 ## Office
 * Thunderbird
